@@ -248,6 +248,7 @@ public class Success {
     }
     
     static void q17(int a[], int b[]) {
+    	//Merge two array
     	int c[]= new int[a.length+b.length];
     	int i=0, j=0 ,k=0;
     	for(;i<a.length && j<b.length;k++) {
@@ -272,6 +273,69 @@ public class Success {
     	//treemap sort the keys automatically
     }
     
+    static void q18(int c[]) {
+    	//find missing in first n natural num
+    	for(int i=0; i< c.length;i++) {
+    		if(c[i]!=i+1) {
+    			System.out.println(i+1 +" is missing");
+    			return;
+    		}
+    			
+    	}
+    }
+    
+    static void q19(int c[]) {
+    	//find missing in n natural num
+    	int diff= c[0];
+    	for(int i=1; i< c.length-1;i++) {
+    		if(c[i]-i!=diff) {
+    			System.out.println(c[i]-1+" is missing");
+    			return;
+    		}
+    			
+    	}
+    }
+    
+    static void q20(int c[]) {
+    	//find multipal missing in n natural num
+    	int diff= c[0];
+    	for(int i=0; i<c.length;i++) {
+    		if(c[i]-i!=diff) {
+    			System.out.println(c[i]-1+ " is missing");
+    			diff=c[i]-i;
+    		}
+    	}
+    }
+    
+    static void q21(int c[],int n) {
+    	//find two sum
+    	//brute forge
+//    	for(int i=0 ;i< c.length-1;i++) {
+//    		for(int j=i+1; j<c.length;j++) {
+//    			if(c[i]+c[j]==n) {
+//    				System.out.println(c[i]+" "+c[j]);
+//    				
+//    			}
+//    		}
+//    	}
+    	//by using set
+    	Map<Integer, Integer> mp = new HashMap<>();
+        for(int i=0; i<c.length;i++) {
+        	int diff= n-c[i];
+        	int result[]= null;
+        	if(mp.containsKey(diff)) {
+        		result = new int[2];
+                result[0] = c[i]; 
+                result[1] = diff;
+                display(result);
+          	}
+        	else {
+        		mp.put(c[i], 1);
+        	}
+        }
+       
+        
+    }
     
 	static void display(int[] b) {
 		for(int i=0;i < b.length; i++) {
@@ -288,7 +352,7 @@ public class Success {
 	}
 
 	public static void main(String[] args) {
-		int a[] = {4,10,12,40,85,86,96};
+		int a[] = {4,10,12,40,46,86,96};
 		//q1(a);
 		//q2(a , 5);
 		//q3(a,3);
@@ -305,8 +369,15 @@ public class Success {
 		//q14(a,96,0,a.length-1);
 		//q15(a);
 		//q16(a);
-		int b[] = {9,11,33,108};
-		q17(a,b);
+		//int b[] = {9,11,33,108};
+		//q17(a,b);
+//		int c[]= {1,2,3,4,6,7,8};
+//		q18(c);
+		//int c[]= {6,7,8,10,11,12};
+		//q19(c);
+		//int c[]= {6,7,8,10,12};
+		//q20(c);
+		q21(a,50);
 	}
 
 	
